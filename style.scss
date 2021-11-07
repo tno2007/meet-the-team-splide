@@ -1,0 +1,25 @@
+.block {
+  background: #c0e900;
+  background: linear-gradient(0deg, #98e228 20%, #c0e900);
+  box-shadow: 1rem 1rem 30px 4px rgba(83, 137, 8, 0.1);
+  width: 320px;
+  height: 320px;
+  opacity: 1;
+  overflow: hidden;
+  position: relative;
+
+  transition: opacity 0.4s ease, -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, opacity 0.4s ease;
+  transition: transform 0.4s ease-out, opacity 0.4s ease,
+    -webkit-transform 0.4s ease-out;
+
+  will-change: transform;
+}
+
+.splide__slide {
+  opacity: 0.3;
+}
+
+.splide__slide.is-active {
+  opacity: 1;
+}
