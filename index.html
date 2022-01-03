@@ -2,69 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="node_modules/@splidejs/splide/dist/css/splide.min.css"
-    />
-    <link rel="stylesheet" href="style.scss" />
+    <title>Vite App</title>
   </head>
   <body>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <div>
-              <img src="images/john-dunn.jpg" alt="" />
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div>
-              <img src="images/john-dunn.jpg" alt="" />
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div>
-              <img src="images/john-dunn.jpg" alt="" />
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div>
-              <img src="images/john-dunn.jpg" alt="" />
-            </div>
-          </li>
-          <li class="splide__slide">
-            <div>
-              <img src="images/john-dunn.jpg" alt="" />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <script src="node_modules/@splidejs/splide/dist/js/splide.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var splide = new Splide(".splide", {
-          type: "loop",
-          focus: "center",
-          //autoplay: true,
-          //rewind: true,
-          perPage: 3,
-          //perMove: 1,
-          trimSpace: false,
-          keyboard: true,
-          width: "100vw",
-          height: "100vh",
-          updateOnMove: true,
-          //drag: false,
-          waitForTransition: false,
-        });
-        splide.mount();
-      });
-    </script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
