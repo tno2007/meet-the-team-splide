@@ -6,7 +6,7 @@ export const team = [
     description: `
     <p></p><p>Having qualified at Deloitte &amp; Touche in Cape Town, Reg moved over to London and spent three years in investment banking in the city.</p>
     <p>He founded a small tax consultancy in 1996 and in six years turned this into a company with offices in three countries and over 200 staff.</p>
-    <p>Reg lives in Putney, with his wife and two young sons. In his spare time, he competes internationally at croquet – he is a seven-time winner of the World Championships.</p><p></p>
+    <p>Reg lives in Putney, with his wife and two young sons. In his spare time, he competes internationally at croquet - he is a seven-time winner of the World Championships.</p><p></p>
     `,
   },
   {

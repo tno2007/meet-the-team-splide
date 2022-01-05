@@ -1,23 +1,28 @@
 <script setup lang="ts">
 import { Splide } from "@splidejs/splide";
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from "vue";
 import { team } from "../data/team";
 
 const props = defineProps({
     foo: String,
     bar: {
         type: Number,
-        required: false
-    }
-})
+        required: false,
+    },
+});
 
 onMounted(() => {
-    var splide = new Splide(".splide", {
+    const list = new Splide("#thumbnail-list", {
         type: "loop",
         focus: "center",
         //autoplay: true,
         //rewind: true,
-        perPage: 3,
+        perPage: 5,
+        breakpoints: {
+            640: {
+                perPage: 2,
+            },
+        },
         //perMove: 1,
         trimSpace: false,
         keyboard: true,
@@ -27,32 +32,24 @@ onMounted(() => {
         updateOnMove: true,
         //drag: false,
         waitForTransition: false,
+        //isNavigation: true,
     });
-    splide.mount();
-})
 
+    const detail = new Splide("#thumbnail-detail", {
+        type: "fade",
+        rewind: true,
+        pagination: false,
+        arrows: false,
+    });
+
+    list.sync(detail);
+    list.mount();
+    detail.mount();
+});
 </script>
 
 <style lang="scss">
 @import "@splidejs/splide/dist/css/splide.min.css";
-
-.block {
-    background: #c0e900;
-    background: linear-gradient(0deg, #98e228 20%, #c0e900);
-    box-shadow: 1rem 1rem 30px 4px rgba(83, 137, 8, 0.1);
-    width: 320px;
-    height: 320px;
-    opacity: 1;
-    overflow: hidden;
-    position: relative;
-
-    transition: opacity 0.4s ease, -webkit-transform 0.4s ease-out;
-    transition: transform 0.4s ease-out, opacity 0.4s ease;
-    transition: transform 0.4s ease-out, opacity 0.4s ease,
-        -webkit-transform 0.4s ease-out;
-
-    will-change: transform;
-}
 
 .splide__slide {
     opacity: 0.3;
@@ -76,6 +73,7 @@ onMounted(() => {
         .container {
             .description {
                 bottom: -80px;
+                height: 0;
             }
         }
     }
@@ -87,16 +85,30 @@ onMounted(() => {
 </style>
 
 <template>
-    <div class="splide">
+    <div>
+        <div id="thumbnail-list" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide" v-for="t in team">
+                        <div class="container">
+                            <img class="image" :src="`../src/assets/images/${t.imageUrl}`" />
+                            <div class="description">
+                                <div class="name">{{ t.name }}</div>
+                                <div class="title">{{ t.title }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="thumbnail-detail" class="splide">
         <div class="splide__track">
             <ul class="splide__list">
                 <li class="splide__slide" v-for="t in team">
                     <div class="container">
-                        <img class="image" :src="`../src/assets/images/${t.imageUrl}`" />
-                        <div class="description">
-                            <div class="name">{{ t.name }}</div>
-                            <div class="title">{{ t.title }}</div>
-                        </div>
+                        <p v-html="t.description"></p>
                     </div>
                 </li>
             </ul>
